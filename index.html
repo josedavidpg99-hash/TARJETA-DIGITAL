@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0d2823" />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <title>Jose David Pacheco García — Agente de Seguros</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --page: #f1f3ef;
+        --panel: #ffffff;
+        --ink: #13231f;
+        --muted: #5f6d68;
+        --line: #d9ded9;
+        --deep: #0d2823;
+        --deep-2: #163a31;
+        --accent: #b99553;
+        --accent-soft: #ede3cd;
+        --white: #fbfdfb;
+        --shadow: 0 24px 70px rgba(18, 42, 34, 0.12);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --page: #081511;
+          --panel: #10231d;
+          --ink: #eff5f1;
+          --muted: #a8b7b1;
+          --line: #294139;
+          --deep: #173d33;
+          --deep-2: #1f4b3f;
+          --accent: #d0ad67;
+          --accent-soft: #3c3425;
+          --white: #f7fbf8;
+          --shadow: 0 26px 80px rgba(0, 0, 0, 0.38);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { min-height: 100%; background: var(--page); }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        min-height: 100svh;
+        font-family: "DM Sans", sans-serif;
+        color: var(--ink);
+        background:
+          linear-gradient(115deg, color-mix(in srgb, var(--accent-soft) 68%, transparent) 0%, transparent 34%),
+          var(--page);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+
+      .page {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: clamp(18px, 4vw, 52px);
+      }
+
+      .card {
+        width: min(100%, 960px);
+        min-height: min(720px, calc(100svh - 36px));
+        display: grid;
+        grid-template-columns: minmax(0, 1.03fr) minmax(320px, .97fr);
+        overflow: hidden;
+        background: var(--panel);
+        border: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+        box-shadow: var(--shadow);
+        border-radius: 30px 8px 30px 8px;
+      }
+
+      .intro {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+        padding: clamp(34px, 7vw, 76px);
+        color: var(--white);
+        background:
+          radial-gradient(circle at 18% 7%, rgba(208, 173, 103, .22), transparent 29%),
+          linear-gradient(152deg, var(--deep-2), var(--deep) 64%);
+      }
+
+      .intro::after {
+        content: "";
+        position: absolute;
+        right: -100px;
+        bottom: 14%;
+        width: 260px;
+        height: 260px;
+        border: 1px solid rgba(255,255,255,.11);
+        border-radius: 50%;
+        box-shadow: 0 0 0 34px rgba(255,255,255,.025), 0 0 0 68px rgba(255,255,255,.018);
+        pointer-events: none;
+      }
+
+      .identity { position: relative; z-index: 1; }
+      .role {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        margin: 0 0 30px;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+        color: #e3d3b2;
+      }
+      .role::before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 520px;
+        font-family: "Newsreader", serif;
+        font-size: clamp(3.8rem, 8vw, 6.5rem);
+        font-weight: 500;
+        line-height: .82;
+        letter-spacing: -.055em;
+      }
+
+      .statement {
+        max-width: 410px;
+        margin: 32px 0 0;
+        font-family: "Newsreader", serif;
+        font-size: clamp(1.45rem, 3vw, 2rem);
+        line-height: 1.22;
+        letter-spacing: -.02em;
+        color: #e8efeb;
+      }
+
+      .location {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 56px 0 0;
+        font-size: .92rem;
+        color: #c1d0ca;
+      }
+      .location svg { width: 18px; height: 18px; stroke: var(--accent); }
+
+      .links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(30px, 6vw, 66px);
+      }
+
+      .links h2 {
+        margin: 0 0 10px;
+        font-family: "Newsreader", serif;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 600;
+        letter-spacing: -.035em;
+        line-height: 1;
+      }
+      .links > p {
+        margin: 0 0 34px;
+        max-width: 380px;
+        color: var(--muted);
+        font-size: .97rem;
+        line-height: 1.6;
+      }
+
+      .link-list { display: grid; gap: 12px; }
+      .link-item {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr) 22px;
+        align-items: center;
+        gap: 15px;
+        min-height: 76px;
+        padding: 13px 18px 13px 14px;
+        text-decoration: none;
+        background: color-mix(in srgb, var(--panel) 92%, var(--page));
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        transition: border-color .18s ease, background .18s ease, transform .18s ease;
+      }
+      .link-item:hover {
+        border-color: var(--accent);
+        background: color-mix(in srgb, var(--accent-soft) 26%, var(--panel));
+        transform: translateY(-2px);
+      }
+      .link-item:focus-visible {
+        outline: 3px solid color-mix(in srgb, var(--accent) 42%, transparent);
+        outline-offset: 3px;
+      }
+
+      .icon {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--deep);
+        background: var(--accent-soft);
+      }
+      .icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+      .social-name { display: block; font-size: 1rem; font-weight: 700; }
+      .social-detail {
+        display: block;
+        margin-top: 3px;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: .78rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .arrow { width: 19px; height: 19px; stroke: var(--muted); stroke-width: 1.6; }
+
+      .phone {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+      .phone-label {
+        display: block;
+        color: var(--muted);
+        font-size: .76rem;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .phone-number {
+        display: block;
+        margin-top: 4px;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .call {
+        flex: 0 0 auto;
+        padding: 11px 17px;
+        color: var(--white);
+        background: var(--deep);
+        border-radius: 8px;
+        font-size: .86rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .call:hover { background: var(--deep-2); }
+      .call:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+      @media (max-width: 760px) {
+        .page { display: block; padding: 0; }
+        .card {
+          width: 100%;
+          min-height: 100svh;
+          display: block;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+        .intro {
+          min-height: 340px;
+          padding: 42px 26px 34px;
+        }
+        .intro::after { right: -125px; bottom: -55px; }
+        h1 { font-size: clamp(3.5rem, 15vw, 5.2rem); }
+        .role { margin-bottom: 24px; }
+        .statement { max-width: 330px; margin-top: 24px; font-size: 1.55rem; }
+        .location { margin-top: 46px; }
+        .links { padding: 36px 20px max(36px, env(safe-area-inset-bottom)); }
+        .links > p { margin-bottom: 26px; }
+      }
+
+      @media (max-width: 370px) {
+        .intro { padding-left: 20px; padding-right: 20px; }
+        .links { padding-left: 14px; padding-right: 14px; }
+        .link-item { grid-template-columns: 42px minmax(0, 1fr) 18px; gap: 11px; padding-left: 11px; padding-right: 13px; }
+        .icon { width: 42px; height: 42px; }
+        .phone { align-items: flex-start; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <article class="card" aria-labelledby="jose-david-name">
+        <section class="intro">
+          <div class="identity">
+            <p class="role">Agente de Seguros</p>
+            <h1 id="jose-david-name">Jose David Pacheco</h1>
+            <p class="statement">Hablemos de la protección que buscas para ti y tu familia.</p>
+          </div>
+          <p class="location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" fill="none"/><circle cx="12" cy="10" r="2.5" fill="none"/></svg>
+            Atención en Utah
+          </p>
+        </section>
+
+        <section class="links" aria-labelledby="contact-heading">
+          <h2 id="contact-heading">Conversemos</h2>
+          <p>Elige el medio que prefieras para comunicarte conmigo o conocer más de mi trabajo.</p>
+
+          <nav class="link-list" aria-label="Enlaces de contacto y redes sociales">
+            <a class="link-item" href="https://wa.me/13852302341" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Jose David Pacheco García por WhatsApp">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M20 11.6a8 8 0 0 1-11.85 7L4 20l1.36-4A8 8 0 1 1 20 11.6Z"/><path d="M9 8.4c.25 2.05 2.2 4 4.25 4.35M9.1 8.4l1.2-.35.75 1.65-.8.65M13.25 12.75l.7-.85 1.7.7-.3 1.2"/></svg>
+              </span>
+              <span><span class="social-name">WhatsApp</span><span class="social-detail">Mensaje directo</span></span>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+
+            <a class="link-item" href="https://www.instagram.com/jdavidpachecog" target="_blank" rel="noopener noreferrer" aria-label="Ver el Instagram de Jose David Pacheco García">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.7" r=".7" fill="currentColor" stroke="none"/></svg>
+              </span>
+              <span><span class="social-name">Instagram</span><span class="social-detail">@jdavidpachecog</span></span>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+
+            <a class="link-item" href="https://www.facebook.com/100003188562941" target="_blank" rel="noopener noreferrer" aria-label="Ver el Facebook de Jose David Pacheco García">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M13.4 20v-7h2.5l.4-3h-2.9V8.1c0-.9.25-1.5 1.5-1.5h1.6V4a21 21 0 0 0-2.3-.1c-2.3 0-3.8 1.4-3.8 3.9V10H8v3h2.4v7"/></svg>
+              </span>
+              <span><span class="social-name">Facebook</span><span class="social-detail">Perfil profesional</span></span>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+            </a>
+          </nav>
+
+          <div class="phone">
+            <div>
+              <span class="phone-label">Teléfono</span>
+              <span class="phone-number">(385) 230-2341</span>
+            </div>
+            <a class="call" href="tel:+13852302341" aria-label="Llamar al 385 230 2341">Llamar</a>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
